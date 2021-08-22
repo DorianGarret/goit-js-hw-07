@@ -12,3 +12,15 @@ const images = [
         alt: 'Group of Horses Running',
     },
 ];
+
+const gallery = document.getElementById('gallery');
+console.log(gallery);
+
+function createMurkup({ url, alt }) {
+    return `<li>
+        <img src="${url}" alt="${alt}" width="400"/> 
+      </li>`;
+}
+const getMurcup = images.map(createMurkup).join('');
+
+gallery.insertAdjacentHTML('beforeend', getMurcup);
