@@ -235,3 +235,4 @@ input), подставляет его текущее значение в `span#n
 <div id="boxes"></div>
 ```
 # goit-js-hw-07
+# goit-js-hw-07
