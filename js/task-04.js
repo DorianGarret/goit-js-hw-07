@@ -1,16 +1,28 @@
-const refs = {
-    btnDecrement: document.querySelector('[data-action="decrement"]'),
-    btnIncrement: document.querySelector('[data-action="increment"]'),
-    spanValue: document.getElementById('value'),
-    currentValue: 0,
-};
+const counterBtns = document.querySelectorAll('#counter button');
 
-refs.btnIncrement.addEventListener('click', increment);
-refs.btnDecrement.addEventListener('click', decrement);
+counterBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+        const DATASET = {
+            INCREMENT: 'increment',
+            DECREMENT: 'decrement',
+        };
 
-function increment() {
-    refs.spanValue.textContent = refs.currentValue += 1;
-}
-function decrement() {
-    refs.spanValue.textContent = refs.currentValue -= 1;
-}
+        const action = this.dataset.action;
+
+        const value = document.getElementById('value');
+        const currentValue = +value.textContent;
+
+        let newValue = 0;
+
+        switch (action) {
+            case DATASET.INCREMENT:
+                newValue = currentValue + 1;
+                break;
+
+            case DATASET.DECREMENT:
+                newValue = currentValue - 1 > 0 ? currentValue - 1 : 0;
+                break;
+        }
+        value.textContent = newValue;
+    });
+});
