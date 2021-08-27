@@ -1,5 +1,7 @@
 const counterBtns = document.querySelectorAll('#counter button');
 
+let currentValue = 0;
+
 counterBtns.forEach(btn => {
     btn.addEventListener('click', function () {
         const DATASET = {
@@ -8,21 +10,18 @@ counterBtns.forEach(btn => {
         };
 
         const action = this.dataset.action;
-
         const value = document.getElementById('value');
-        const currentValue = +value.textContent;
-
-        let newValue = 0;
 
         switch (action) {
             case DATASET.INCREMENT:
-                newValue = currentValue + 1;
+                currentValue += 1;
+                value.textContent = currentValue;
                 break;
 
             case DATASET.DECREMENT:
-                newValue = currentValue - 1 > 0 ? currentValue - 1 : 0;
+                currentValue > 0 ? (currentValue -= 1) : 0;
+                value.textContent = currentValue;
                 break;
         }
-        value.textContent = newValue;
     });
 });
