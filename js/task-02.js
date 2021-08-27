@@ -2,11 +2,11 @@ const ingredients = ['Картошка', 'Грибы', 'Чеснок', 'Поми
 
 const ingredientsEl = document.getElementById('ingredients');
 
-function createMurkup(options) {
+function createMarkUp(options) {
     return options.map(option => {
         let li = document.createElement('li');
         li.textContent = option;
         return li;
     });
 }
-ingredientsEl.append(...createMurkup(ingredients));
+ingredientsEl.append(...createMarkUp(ingredients));
