@@ -7,9 +7,10 @@ const refs = {
 let initialSizeBox = 30;
 
 refs.render.addEventListener('click', renderBox);
+refs.destroy.addEventListener('click', destroyBox);
 
 function renderBox() {
-    let inputValue = +refs.input.value;
+    let inputValue = Number(refs.input.value);
     let createBox = [];
     for (let i = 0; i <= inputValue; i++) {
         if (i !== 0) {
@@ -20,14 +21,13 @@ function renderBox() {
     }
     refs.box.insertAdjacentHTML('beforeend', createBox.join(''));
 }
-function getRandomHexColor() {
-    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-}
-
-refs.destroy.addEventListener('click', destroyBox);
 
 function destroyBox() {
     refs.box.innerHTML = '';
     initialSizeBox = 30;
     refs.input.value = '';
+}
+
+function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
