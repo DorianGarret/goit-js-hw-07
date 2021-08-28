@@ -14,13 +14,16 @@ const images = [
 ];
 
 const gallery = document.getElementById('gallery');
-console.log(gallery);
 
-function createMurkup({ url, alt }) {
+gallery.style.listStyle = 'none';
+gallery.style.display = 'flex';
+gallery.style.justifyContent = 'space-evenly';
+
+const getMarkUp = images.map(setMarkUp).join('');
+gallery.insertAdjacentHTML('beforeend', getMarkUp);
+
+function setMarkUp({ url, alt }) {
     return `<li>
-        <img src="${url}" alt="${alt}" width="400"/> 
+        <img src="${url}" alt="${alt}" width="400" height="225" /> 
       </li>`;
 }
-const getMurcup = images.map(createMurkup).join('');
-
-gallery.insertAdjacentHTML('beforeend', getMurcup);
